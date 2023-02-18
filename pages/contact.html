@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Li Xin - ITC</title>
+    <link href="../css/style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Expletus+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <ul class="nav" id="header">
+          <li>
+            <a href="../index.html" alt="Home Page" title="Home Page" class="nav-item">Home</a>
+          </li>
+          <li>
+            <a href="about.html" alt="About Myself" title="About Myself" class="nav-item">About</a>
+          </li>
+          <li>
+            <a href="contact.html" alt="Contact Information" title="Contact Me" class="nav-item">Contact</a>
+          </li>
+        </ul>
+    </nav>
+    <div class="form">
+      <form id="fs-frm" name="contact-me-form" accept-charset="utf-8" action="https://formspree.io/f/xknaolqb" method="post">
+        <fieldset id="fs-frm-inputs" control-id="ControlID-1">
+          <label for="first-name">First Name</label>
+            <input type="text" name="name" id="first-name" placeholder="First Name" required="" control-id="ControlID-2">
+          <label for="last-name">Last Name</label>
+            <input type="text" name="name" id="last-name" placeholder="Last Name (Optional)" control-id="ControlID-3">
+          <label for="email-address">Email Address</label>
+            <input type="email" name="_replyto" id="email-address" placeholder="Your Email" required="" control-id="ControlID-4">
+          <label for="comment">Add your comment:</label>
+            <textarea rows="5" name="comment" id="comment" placeholder="Your Comment" required="" control-id="ControlID-5"></textarea>
+          <label for="contact-hour">Which one is the best hour to contact you?</label>
+            <select name="abtype" id="contact-hour" required="" control-id="ControlID-6">
+              <option value="" selected="" disabled="">Select</option>
+              <option value="Morning">Morning</option>
+              <option value="Noon">Noon</option>
+              <option value="Afternoon">Afternoon</option>
+              <option value="Night">Night</option>
+            </select>
+            <input type="hidden" name="_subject" id="email-subject" value="ITC Precourse Contact Form Submission" control-id="ControlID-7">
+        </fieldset>
+        <input type="submit" value="Submit" control-id="ControlID-8" id="submit" disabled>
+      </form>
+    </div>
+  <script src="../js/about.js"></script>
+</body>
+
+<footer class="nav" id="footer">
+  <p id="footer-message"></p>
+</footer>
+<script src="../js/footer.js"></script>
+</html>
