@@ -24,7 +24,6 @@ var links = [
   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27211.838586187845!2d-9.7800517432125!3d31.510978945165217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdad9a4e9f588ccf%3A0x57421a176d5d7d30!2sEssaouira%2C%20Morocco!5e0!3m2!1sen!2sil!4v1676671652774!5m2!1sen!2sil",
   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d186242.35436460486!2d131.81337490670103!3d43.16675197372834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5fb39cba5249d485%3A0x186704d4dd967e35!2sVladivostok%2C%20Primorsky%20Krai%2C%20Russia!5e0!3m2!1sen!2sil!4v1676671690846!5m2!1sen!2sil",
   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d101273.7553612755!2d111.06096065867052!3d37.51252049149585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x367482e8a15a99b3%3A0x7f9e4a83a534deb0!2sL%C3%BCliang%2C%20Shanxi%2C%20China!5e0!3m2!1sen!2sil!4v1676671736302!5m2!1sen!2sil",
-  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d422088.383847204!2d108.68702429490118!3d34.25962918346698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x366379e922ac17b9%3A0x85d466fda794582e!2sXi&#39;An%2C%20Shaanxi%2C%20China!5e0!3m2!1sen!2sil!4v1676672268178!5m2!1sen!2sil",
   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d219655.68099819953!2d103.9354620292477!3d30.658748783883006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x36efc52300447721%3A0xb98652ce2e240e02!2sChengdu%2C%20Sichuan%2C%20China!5e0!3m2!1sen!2sil!4v1676671795073!5m2!1sen!2sil",
   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54084.904955176244!2d34.76222655058773!3d32.087999403070015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151d4ca6193b7c1f%3A0xc1fb72a2c0963f90!2sTel%20Aviv-Yafo!5e0!3m2!1sen!2sil!4v1676671830301!5m2!1sen!2sil",
   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d53711.02535515177!2d35.254798003626945!3d32.71424635056574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151c4e7cf16c0fff%3A0xd2385b30c1275dd6!2sNazareth!5e0!3m2!1sen!2sil!4v1675888170403!5m2!1sen!2sil",
@@ -42,16 +41,11 @@ let currentIndex = 0;
 iframe.src = links[currentIndex];
 
 previousButton.addEventListener("click", function() {
-  // decrement the link index
-  currentIndex--;
-  // disable the previous button if we're on the first link
   if (currentIndex === 0) {
     previousButton.disabled = true;
   }
-  // enable the next button if we're not on the last link
-  if (currentIndex < links.length - 1) {
-    nextBtn.disabled = false;
-  }
+  // decrement the link index
+  currentIndex--;
   // set the new link in the iframe
   iframe.src = links[currentIndex];
 });
