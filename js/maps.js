@@ -41,13 +41,13 @@ let currentIndex = 0;
 iframe.src = links[currentIndex];
 
 previousButton.addEventListener("click", function() {
-  if (currentIndex === 0) {
-    previousButton.disabled = true;
-  }
   // decrement the link index
   currentIndex--;
   // set the new link in the iframe
   iframe.src = links[currentIndex];
+  if (currentIndex === 0) {
+    previousButton.disabled = true;
+  }
 });
 
 nextButton.addEventListener("click", function() {
