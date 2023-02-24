@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <video autoplay muted loop id="video-background">
-  <source
-    src="https://github.com/Him97/portfolio/raw/main/images/pexels-sunsetoned-6606066.mp4"
-    type="video/mp4">
+  <source src="https://github.com/Him97/portfolio/raw/main/images/pexels-sunsetoned-6606066.mp4" type="video/mp4">
 </video>
+<div class="dark-overlay"></div>
 
 <head>
   <meta charset="UTF-8">
@@ -59,11 +58,16 @@
       </ul>
     </div>
   </section>
+
   <script src="./js/main.js"></script>
 </body>
 
 <footer class="nav" id="footer">
   <p id="footer-message"></p>
+  <button class="toggle-switch">
+    <i class="fa-solid fa-moon"></i>
+    <i class="fa-solid fa-sun"></i>
+  </button>
   <script src="./js/footer.js"></script>
 </footer>
 
