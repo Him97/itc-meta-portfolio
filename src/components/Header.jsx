@@ -29,7 +29,7 @@ const socials = [
   },
   {
     icon: faStackOverflow,
-    url: '"https://stackoverflow.com/users/21146058/xin',
+    url: 'https://stackoverflow.com/users/21146058/xin',
   },
 ];
 
