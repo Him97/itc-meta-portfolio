@@ -36,7 +36,7 @@ Before you begin, if you run `npm start` and view the app in the browser, you'll
 The app outputs a page with an empty header, 3 different full-height sections and a footer.
 Every section has a different background color. The first 2 sections will be empty and the third section will contain all the UI elements for the Contact Me form.
 
-<img src="screenshots/initial_app.png" alt="drawing" width="1024"/>
+<img src="public/initial_app.png" alt="drawing" width="1024"/>
 
 ## Steps
 
@@ -75,7 +75,7 @@ Avoid any key related warnings when opening the console.
 
 The final header UI should look like below:
 
-<img src="screenshots/image8.png" alt="drawing" width="1024"/>
+<img src="public/image8.png" alt="drawing" width="1024"/>
 
 ### **Step 2**
 
@@ -84,7 +84,7 @@ For the data, use the variables provided at the top of the file (`greeting`, `bi
 For the avatar you can use the next url: `https://i.pravatar.cc/150?img=7`
 All the components you need have been already imported for you.
 
-<img src="screenshots/image3.png" alt="drawing" width="1024"/>
+<img src="public/image3.png" alt="drawing" width="1024"/>
 
 ### **Step 3**
 
@@ -93,7 +93,7 @@ The `ProjectsSection` component already defines a `projects` array with the data
 
 Open the `Card.js` component and implement the UI for the card. Each card should look like the image below:
 
-<img src="screenshots/image2.png" alt="drawing" width="1024"/>
+<img src="public/image2.png" alt="drawing" width="1024"/>
 
 You can use the following components from Chakra UI that have been already imported for you:
 - HStack,
@@ -115,7 +115,7 @@ The form contains 4 input fields: name, email address, type of enquiry and messa
 
 The whole UI of the form is defined for you. You need to implement some missing business logic.
 
-<img src="screenshots/image4.png" alt="drawing" width="1024"/>
+<img src="public/image4.png" alt="drawing" width="1024"/>
 
 a) **Add the proper configuration to the `useFormik` hook, passing an object with 3 properties**: `initialValues`, `onSubmit` and `validationSchema`. 
 
@@ -148,7 +148,7 @@ The `FormErrorMessage` component from Chakra UI should display the corresponding
 
 Below is an example of how the UI should look like when the validation fails for the `firstName` field:
 
-<img src="screenshots/image5.png" alt="drawing" width="1024"/>
+<img src="public/image5.png" alt="drawing" width="1024"/>
 
 d) **Connect the `form` onSubmit prop with Formik's `handleSubmit` function.**
 
@@ -174,9 +174,9 @@ In addition, the form has to be reset if the response is successful. For that us
 
 This is how the UI should look for both cases:
 
-<img src="screenshots/image6.png" alt="drawing" width="1024"/>
+<img src="public/image6.png" alt="drawing" width="1024"/>
 
-<img src="screenshots/image7.png" alt="drawing" width="1024"/>
+<img src="public/image7.png" alt="drawing" width="1024"/>
 
 ### **Step 5 (bonus)**
 
@@ -196,4 +196,4 @@ Here are some of the elements you may need for the implementation:
 - Removing listeners for the scroll event: `window.removeEventListener('scroll', handleScroll)`
 - Keeping track of the previous scroll position in a variable
 
-![](screenshots/header_animation.gif)
+![](public/header_animation.gif)
