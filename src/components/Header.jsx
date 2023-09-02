@@ -67,7 +67,7 @@ export default function Header() {
           <nav>
             <HStack spacing={8}>
               {socials.map((social, index) => (
-                <a href={social.url}><FontAwesomeIcon icon={social.icon} size='2x' /></a>
+                <a href={social.url} key={index}><FontAwesomeIcon icon={social.icon} size='2x' /></a>
               ))}
             </HStack>
           </nav>
