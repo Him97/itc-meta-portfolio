@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ColorModeSwitcher from './ColorModeSwitcher';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
@@ -34,6 +34,27 @@ const socials = [
 ];
 
 export default function Header() {
+  const [isHidden, setIsHidden] = useState(false)
+  const prevScrollY = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const scrollDirection = currentScrollY > prevScrollY.current ? 'down' : 'up';
+      if (scrollDirection === 'down') {
+        setIsHidden(true)
+      } else {
+        setIsHidden(false)
+      }
+      prevScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    }
+  }, [])
+
   const handleClick = (anchor) => () => {
     const id = `${anchor}-section`;
     const element = document.getElementById(id);
@@ -51,7 +72,7 @@ export default function Header() {
       top={0}
       left={0}
       right={0}
-      translateY={0}
+      transform={isHidden ? 'translateY(-200px)' : 'translateY(0)'}
       transitionProperty='transform'
       transitionDuration='.3s'
       transitionTimingFunction='ease-in-out'
