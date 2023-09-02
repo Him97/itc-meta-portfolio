@@ -10,7 +10,7 @@ export default function FullScreenSection({ children, isDarkBackground, ...boxPr
       backgroundColor={boxProps.backgroundColor}
       color={isDarkBackground ? "white" : "black"}
     >
-      <VStack maxWidth="1280px" minHeight="100vh" {...boxProps}>
+      <VStack width='100vw' minHeight="100vh" {...boxProps}>
         {children}
       </VStack>
     </VStack>
