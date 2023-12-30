@@ -14,7 +14,7 @@ export default function FullScreenSection({
 			bgcolor={boxProps.backgroundColor}
 			color={isDarkBackground ? 'white' : 'black'}
 		>
-			<Stack direction='column' width='100vw' minHeight='100vh' {...boxProps}>
+			<Stack direction='column' minHeight='100vh' {...boxProps}>
 				{children}
 			</Stack>
 		</Stack>

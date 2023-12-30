@@ -1,45 +1,59 @@
 import * as React from 'react';
+import {
+	AppBar,
+	Box,
+	Button,
+	Container,
+	IconButton,
+	Link,
+	Menu,
+	Toolbar,
+	Tooltip,
+	useTheme,
+} from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import StackedLineChartIcon from '@mui/icons-material/StackedLineChart';
-import { Box, Link, IconButton, Stack } from '@mui/material';
+import { HashLink } from 'react-router-hash-link';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 const socials = [
 	{
 		icon: EmailIcon,
 		url: 'mailto:xin.li@outlook.co.il',
+		tooltip: 'Email',
 	},
 	{
 		icon: GitHubIcon,
-		url: 'https://github.com/Him97',
+		url: 'https://github.com/him-li/',
+		tooltip: 'GitHub',
 	},
 	{
 		icon: LinkedInIcon,
 		url: 'https://www.linkedin.com/in/xin-li-5387a5169/',
+		tooltip: 'LinkedIn',
 	},
 	{
 		icon: StackedLineChartIcon,
 		url: 'https://stackoverflow.com/users/21146058/xin',
+		tooltip: 'Stack Overflow',
 	},
 ];
 
-/**
- * This component illustrates the use of both the useRef hook and useEffect hook.
- * The useRef hook is used to create a reference to a DOM element, in order to tweak the header styles and run a transition animation.
- * The useEffect hook is used to perform a subscription when the component is mounted and to unsubscribe when the component is unmounted.
- * Additionally, it showcases a neat implementation to smoothly navigate to different sections of the page when clicking on the header elements.
- */
-
 export default function Header() {
+	const theme = useTheme();
 	const headerRef = React.useRef(null);
+	const [activeLink, setActiveLink] = React.useState<string>('home');
+	const [scrolled, setScrolled] = React.useState<boolean>(false);
 
 	React.useEffect(() => {
 		let prevScrollPos = window.scrollY;
 
 		const handleScroll = () => {
 			const currentScrollPos = window.scrollY;
-			const headerElement = headerRef.current;
+			const headerElement: HTMLElement = headerRef.current;
 			if (!headerElement) {
 				return;
 			}
@@ -57,6 +71,18 @@ export default function Header() {
 		};
 	}, []);
 
+	const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
+		null
+	);
+
+	const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+		setAnchorElNav(event.currentTarget);
+	};
+
+	const handleCloseNavMenu = () => {
+		setAnchorElNav(null);
+	};
+
 	const handleClick = (anchor) => () => {
 		const id = `${anchor}-section`;
 		const element = document.getElementById(id);
@@ -68,52 +94,137 @@ export default function Header() {
 		}
 	};
 
+	const onUpdateActiveLink = (value) => {
+		setActiveLink(value);
+	};
+
 	return (
-		<Box
-			component='nav'
-			position='fixed'
-			top={0}
-			left={0}
-			right={0}
-			sx={{
-				translateY: 0,
-				transitionProperty: 'transform',
-				transitionDuration: '.3s',
-				transitionTimingFunction: 'ease-in-out',
-			}}
-			bgcolor='#18181b'
-			ref={headerRef}
-		>
-			<Box color='white' maxWidth='1280px' margin='0 auto'>
-				<Stack
-					direction='row'
-					px={16}
-					py={4}
-					justifyContent='space-between'
-					alignItems='center'
-				>
-					<Stack direction='row' spacing={8}>
-						{socials.map((social, index) => (
+		<Router>
+			<AppBar
+				position='sticky'
+				style={{
+					backgroundColor:
+						theme.palette.mode === 'dark'
+							? 'rgba(0, 0, 0, 0.7)'
+							: 'rgba(255, 255, 255, 0.7)',
+				}}
+			>
+				<Container maxWidth='lg'>
+					<Toolbar disableGutters>
+						<Box display={{ xs: 'flex', md: 'none' }} flexGrow={1}>
 							<IconButton
-								key={index}
-								href={social.url}
-								target='_blank'
-								rel='noopener noreferrer'
+								size='large'
+								aria-label='account of current user'
+								aria-controls='menu-appbar'
+								aria-haspopup='true'
+								onClick={handleOpenNavMenu}
 							>
-								<social.icon />
+								<MenuIcon />
 							</IconButton>
-						))}
-					</Stack>
-					<Stack direction='row' spacing={8}>
-						<Link href='/#projects' onClick={handleClick('projects')}>
-							Projects
-						</Link>
-						<Link href='/#contact-me' onClick={handleClick('contactme')}>
-							Contact Me
-						</Link>
-					</Stack>
-				</Stack>
-			</Box>
-		</Box>
+							<Menu
+								id='menu-appbar'
+								anchorEl={anchorElNav}
+								anchorOrigin={{
+									vertical: 'bottom',
+									horizontal: 'left',
+								}}
+								keepMounted
+								transformOrigin={{
+									vertical: 'top',
+									horizontal: 'left',
+								}}
+								open={Boolean(anchorElNav)}
+								onClose={handleCloseNavMenu}
+								sx={{
+									display: { xs: 'block', md: 'none' },
+								}}
+							>
+								{socials.map((social, index) => (
+									<Tooltip title={social.tooltip} key={index}>
+										<IconButton
+											href={social.url}
+											target='_blank'
+											rel='noopener noreferrer'
+											size='large'
+										>
+											<social.icon />
+										</IconButton>
+									</Tooltip>
+								))}
+							</Menu>
+						</Box>
+						<Box flexGrow={1} display={{ xs: 'none', md: 'flex' }}>
+							{socials.map((social, index) => (
+								<Tooltip title={social.tooltip} key={index}>
+									<IconButton
+										href={social.url}
+										target='_blank'
+										rel='noopener noreferrer'
+										size='large'
+									>
+										<social.icon />
+									</IconButton>
+								</Tooltip>
+							))}
+						</Box>
+
+						<Box sx={{ flexGrow: 0 }} display={{ xs: 'none', md: 'flex' }}>
+							<nav className='ms-auto'>
+								<Link
+									href='#home'
+									className={
+										activeLink === 'home' ? 'active navbar-link' : 'navbar-link'
+									}
+									onClick={() => onUpdateActiveLink('home')}
+								>
+									Home
+								</Link>
+								<Link
+									href='#skills'
+									className={
+										activeLink === 'skills'
+											? 'active navbar-link'
+											: 'navbar-link'
+									}
+									onClick={() => onUpdateActiveLink('skills')}
+								>
+									Skills
+								</Link>
+								<Link
+									href='#projects'
+									className={
+										activeLink === 'projects'
+											? 'active navbar-link'
+											: 'navbar-link'
+									}
+									onClick={() => onUpdateActiveLink('projects')}
+								>
+									Projects
+								</Link>
+							</nav>
+							<span className='navbar-text'>
+								<div className='social-icon'>
+									{socials.map((social, index) => (
+										<Tooltip title={social.tooltip} key={index}>
+											<IconButton
+												href={social.url}
+												target='_blank'
+												rel='noopener noreferrer'
+												size='large'
+											>
+												<social.icon />
+											</IconButton>
+										</Tooltip>
+									))}
+								</div>
+								<HashLink to='#connect'>
+									<Button variant='outlined'>Let’s Connect</Button>
+								</HashLink>
+							</span>
+						</Box>
+					</Toolbar>
+				</Container>
+			</AppBar>
+		</Router>
 	);
 }

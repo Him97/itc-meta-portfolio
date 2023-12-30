@@ -11,13 +11,12 @@ import { AlertProvider } from './context/alertContext';
 export default function App() {
 	return (
 		<Stack
+			className='App'
 			direction='column'
+			position='relative'
 			minHeight='100vh'
 			maxWidth='100vw'
-			p={3}
-			gap={8}
 			textAlign='center'
-			fontSize='xl'
 		>
 			<Header />
 			<AlertProvider>

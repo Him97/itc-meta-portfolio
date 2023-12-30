@@ -5,11 +5,10 @@ import {
 	Button,
 	FormControl,
 	FormHelperText,
-	FormLabel,
-	Input,
+	InputLabel,
 	NativeSelect,
+	OutlinedInput,
 	Stack,
-	TextField,
 	Typography,
 } from '@mui/material';
 import * as Yup from 'yup';
@@ -23,7 +22,7 @@ export default function LandingSection() {
 
 	const formik = useFormik({
 		initialValues: {
-			firstName: '',
+			firstname: '',
 			email: '',
 			type: 'hireMe',
 			comment: '',
@@ -34,7 +33,7 @@ export default function LandingSection() {
 		},
 
 		validationSchema: Yup.object({
-			firstName: Yup.string().required('Required'),
+			firstname: Yup.string().required('Required'),
 			email: Yup.string().email('Invalid email address').required('Required'),
 			comment: Yup.string()
 				.min(25, 'Must be at least 25 characters')
@@ -52,41 +51,52 @@ export default function LandingSection() {
 	}, [formik, onOpen, response]);
 
 	return (
-		<FullScreenSection
-			isDarkBackground
-			backgroundColor='#512DA8'
-			py={16}
-			spacing={8}
-		>
-			<Stack direction='column' width='100%' p={32} alignItems='flex-start'>
+		<FullScreenSection isDarkBackground backgroundColor='#512DA8' spacing={8}>
+			<Stack direction='column' p={32} alignItems='flex-start'>
 				<Typography variant='h1' id='contactme-section'>
 					Contact me
 				</Typography>
 				<Box p={6} width='100%' component='form' onSubmit={formik.handleSubmit}>
 					<Stack spacing={4}>
 						<FormControl
-							error={!!formik.errors.firstName && formik.touched.firstName}
+							fullWidth
+							variant='outlined'
+							error={!!formik.errors.firstname && formik.touched.firstname}
 						>
-							<FormLabel htmlFor='firstName'>Name</FormLabel>
-							<Input id='firstName' {...formik.getFieldProps('firstName')} />
-							<FormHelperText>{formik.errors.firstName}</FormHelperText>
+							<InputLabel htmlFor='firstname'>First Name</InputLabel>
+							<OutlinedInput
+								required
+								id='firstname'
+								label='First Name'
+								{...formik.getFieldProps('firstname')}
+							/>
+							<FormHelperText>{formik.errors.firstname}</FormHelperText>
 						</FormControl>
-						<FormControl error={!!formik.errors.email && formik.touched.email}>
-							<FormLabel htmlFor='email'>Email Address</FormLabel>
-							<Input
+
+						<FormControl
+							fullWidth
+							variant='outlined'
+							error={!!formik.errors.email && formik.touched.email}
+						>
+							<InputLabel htmlFor='email'>Email Address</InputLabel>
+							<OutlinedInput
+								required
 								id='email'
-								type='email'
+								label='Email Address'
 								{...formik.getFieldProps('email')}
 							/>
 							<FormHelperText>{formik.errors.email}</FormHelperText>
 						</FormControl>
-						<FormControl>
-							<FormLabel htmlFor='type'>Type of enquiry</FormLabel>
+						<FormControl fullWidth variant='outlined'>
 							<NativeSelect
 								title='type'
 								id='type'
+								defaultValue=''
 								{...formik.getFieldProps('type')}
 							>
+								<option value='' disabled>
+									Type of enquiry
+								</option>
 								<option value='hireMe'>Freelance project proposal</option>
 								<option value='openSource'>
 									Open source consultancy session
@@ -95,11 +105,14 @@ export default function LandingSection() {
 							</NativeSelect>
 						</FormControl>
 						<FormControl
+							fullWidth
+							variant='outlined'
 							error={!!formik.errors.comment && formik.touched.comment}
 						>
-							<FormLabel htmlFor='comment'>Your message</FormLabel>
-							<TextField
+							<InputLabel htmlFor='comment'>Your message</InputLabel>
+							<OutlinedInput
 								id='comment'
+								label='Your message'
 								multiline
 								{...formik.getFieldProps('comment')}
 							/>

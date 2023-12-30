@@ -1,26 +1,29 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Container, Link, Typography } from '@mui/material';
 
 export default function Footer() {
 	return (
 		<Box
 			component='footer'
-			bgcolor='#18181b'
-			bottom={0}
-			left={0}
-			right={0}
-			width='100%'
+			sx={{
+				py: 3,
+				px: 2,
+				mt: 'auto',
+				backgroundColor: (theme) =>
+					theme.palette.mode === 'light'
+						? theme.palette.grey[200]
+						: theme.palette.grey[800],
+			}}
 		>
-			<Box
-				margin='0 auto'
-				px={12}
-				color='white'
-				justifyContent='center'
-				alignItems='center'
-				maxWidth='1024px'
-				height={16}
-			>
-				<Typography>Xin • © 2023</Typography>
-			</Box>
+			<Container maxWidth='sm'>
+				<Typography variant='body2' color='text.secondary'>
+					{'Copyright © '}
+					<Link color='inherit' href='https://mui.com/'>
+						Xin Li
+					</Link>{' '}
+					{new Date().getFullYear()}
+					{'.'}
+				</Typography>
+			</Container>
 		</Box>
 	);
 }
