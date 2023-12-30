@@ -1,34 +1,25 @@
 import * as React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import ColorModeSwitcher from './ColorModeSwitcher';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import {
-	faGithub,
-	faLinkedin,
-	faMedium,
-	faStackOverflow,
-} from '@fortawesome/free-brands-svg-icons';
-import { Box, Link, Stack } from '@mui/material';
+import EmailIcon from '@mui/icons-material/Email';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import StackedLineChartIcon from '@mui/icons-material/StackedLineChart';
+import { Box, Link, IconButton, Stack } from '@mui/material';
 
 const socials = [
 	{
-		icon: faEnvelope,
-		url: 'mailto:adrian.hsin@gmail.com',
+		icon: EmailIcon,
+		url: 'mailto:xin.li@outlook.co.il',
 	},
 	{
-		icon: faGithub,
+		icon: GitHubIcon,
 		url: 'https://github.com/Him97',
 	},
 	{
-		icon: faLinkedin,
+		icon: LinkedInIcon,
 		url: 'https://www.linkedin.com/in/xin-li-5387a5169/',
 	},
 	{
-		icon: faMedium,
-		url: 'https://medium.com',
-	},
-	{
-		icon: faStackOverflow,
+		icon: StackedLineChartIcon,
 		url: 'https://stackoverflow.com/users/21146058/xin',
 	},
 ];
@@ -43,7 +34,7 @@ const socials = [
 export default function Header() {
 	const headerRef = React.useRef(null);
 
-	React.createElementuseEffect(() => {
+	React.useEffect(() => {
 		let prevScrollPos = window.scrollY;
 
 		const handleScroll = () => {
@@ -103,14 +94,14 @@ export default function Header() {
 				>
 					<Stack direction='row' spacing={8}>
 						{socials.map((social, index) => (
-							<Link
+							<IconButton
 								key={index}
 								href={social.url}
 								target='_blank'
 								rel='noopener noreferrer'
 							>
-								<FontAwesomeIcon icon={social.icon} key={index} size='2x' />
-							</Link>
+								<social.icon />
+							</IconButton>
 						))}
 					</Stack>
 					<Stack direction='row' spacing={8}>
@@ -120,7 +111,6 @@ export default function Header() {
 						<Link href='/#contact-me' onClick={handleClick('contactme')}>
 							Contact Me
 						</Link>
-						<ColorModeSwitcher justifySelf='flex-end' />
 					</Stack>
 				</Stack>
 			</Box>

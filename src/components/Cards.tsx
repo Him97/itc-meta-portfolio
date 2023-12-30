@@ -1,23 +1,32 @@
-import { Card, CardActions, CardHeader, CardMedia } from '@mui/material';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import {
+	Card,
+	CardActions,
+	CardActionArea,
+	CardHeader,
+	CardMedia,
+	Typography,
+} from '@mui/material';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { CardContentType } from '../type';
 
-export default function Cards({ title, description, imageSrc }) {
+export default function Cards({
+	title,
+	description,
+	imageSrc,
+}: CardContentType) {
 	return (
 		<Card>
 			<CardMedia component='img' src={imageSrc} alt={title} />
 			<CardHeader>{title}</CardHeader>
-			<CardBody>
-				<Text color='gray' align='start'>
+			<CardActions>
+				<Typography color='gray' textAlign='start'>
 					{description}
-				</Text>
-			</CardBody>
-			<CardFooter>
-				<HStack>
-					<Text>See more</Text>
-					<FontAwesomeIcon icon={faArrowRight} size='1x' />
-				</HStack>
-			</CardFooter>
+				</Typography>
+			</CardActions>
+			<CardActionArea>
+				<Typography>See more</Typography>
+				<ChevronRightIcon />
+			</CardActionArea>
 		</Card>
 	);
 }

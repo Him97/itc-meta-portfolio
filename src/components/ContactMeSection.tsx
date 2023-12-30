@@ -4,22 +4,22 @@ import {
 	Box,
 	Button,
 	FormControl,
-	FormErrorMessage,
+	FormHelperText,
 	FormLabel,
-	Heading,
 	Input,
-	Select,
-	Textarea,
-	VStack,
+	NativeSelect,
+	Stack,
+	TextField,
+	Typography,
 } from '@mui/material';
 import * as Yup from 'yup';
 import FullScreenSection from './FullScreenSection';
 import useSubmit from '../hooks/useSubmit';
-import { useAlertContext } from '../context/alertContext';
+import useAlert from '../hooks/useAlert';
 
 export default function LandingSection() {
-	const { isLoading, response, submit } = useSubmit();
-	const { onOpen } = useAlertContext();
+	const { response, submit } = useSubmit();
+	const { onOpen } = useAlert();
 
 	const formik = useFormik({
 		initialValues: {
@@ -44,12 +44,12 @@ export default function LandingSection() {
 
 	React.useEffect(() => {
 		if (response) {
-			onOpen(response.type, response.message);
-			if (response.type === 'success') {
+			onOpen(response.isSuccess, response.message);
+			if (response.isSuccess === true) {
 				formik.resetForm();
 			}
 		}
-	}, [response]);
+	}, [formik, onOpen, response]);
 
 	return (
 		<FullScreenSection
@@ -58,72 +58,59 @@ export default function LandingSection() {
 			py={16}
 			spacing={8}
 		>
-			<VStack w='100%' p={32} alignItems='flex-start'>
-				<Heading as='h1' id='contactme-section'>
+			<Stack direction='column' width='100%' p={32} alignItems='flex-start'>
+				<Typography variant='h1' id='contactme-section'>
 					Contact me
-				</Heading>
-				<Box p={6} rounded='md' w='100%'>
-					<form onSubmit={formik.handleSubmit}>
-						<VStack spacing={4}>
-							<FormControl
-								isInvalid={
-									!!formik.errors.firstName && formik.touched.firstName
-								}
+				</Typography>
+				<Box p={6} width='100%' component='form' onSubmit={formik.handleSubmit}>
+					<Stack spacing={4}>
+						<FormControl
+							error={!!formik.errors.firstName && formik.touched.firstName}
+						>
+							<FormLabel htmlFor='firstName'>Name</FormLabel>
+							<Input id='firstName' {...formik.getFieldProps('firstName')} />
+							<FormHelperText>{formik.errors.firstName}</FormHelperText>
+						</FormControl>
+						<FormControl error={!!formik.errors.email && formik.touched.email}>
+							<FormLabel htmlFor='email'>Email Address</FormLabel>
+							<Input
+								id='email'
+								type='email'
+								{...formik.getFieldProps('email')}
+							/>
+							<FormHelperText>{formik.errors.email}</FormHelperText>
+						</FormControl>
+						<FormControl>
+							<FormLabel htmlFor='type'>Type of enquiry</FormLabel>
+							<NativeSelect
+								title='type'
+								id='type'
+								{...formik.getFieldProps('type')}
 							>
-								<FormLabel htmlFor='firstName'>Name</FormLabel>
-								<Input
-									id='firstName'
-									name='firstName'
-									{...formik.getFieldProps('firstName')}
-								/>
-								<FormErrorMessage>{formik.errors.firstName}</FormErrorMessage>
-							</FormControl>
-							<FormControl
-								isInvalid={!!formik.errors.email && formik.touched.email}
-							>
-								<FormLabel htmlFor='email'>Email Address</FormLabel>
-								<Input
-									id='email'
-									name='email'
-									type='email'
-									{...formik.getFieldProps('email')}
-								/>
-								<FormErrorMessage>{formik.errors.email}</FormErrorMessage>
-							</FormControl>
-							<FormControl>
-								<FormLabel htmlFor='type'>Type of enquiry</FormLabel>
-								<Select id='type' name='type' {...formik.getFieldProps('type')}>
-									<option value='hireMe'>Freelance project proposal</option>
-									<option value='openSource'>
-										Open source consultancy session
-									</option>
-									<option value='other'>Other</option>
-								</Select>
-							</FormControl>
-							<FormControl
-								isInvalid={!!formik.errors.comment && formik.touched.comment}
-							>
-								<FormLabel htmlFor='comment'>Your message</FormLabel>
-								<Textarea
-									id='comment'
-									name='comment'
-									height={250}
-									{...formik.getFieldProps('comment')}
-								/>
-								<FormErrorMessage>{formik.errors.comment}</FormErrorMessage>
-							</FormControl>
-							<Button
-								type='submit'
-								colorScheme='purple'
-								width='full'
-								isLoading={isLoading}
-							>
-								Submit
-							</Button>
-						</VStack>
-					</form>
+								<option value='hireMe'>Freelance project proposal</option>
+								<option value='openSource'>
+									Open source consultancy session
+								</option>
+								<option value='other'>Other</option>
+							</NativeSelect>
+						</FormControl>
+						<FormControl
+							error={!!formik.errors.comment && formik.touched.comment}
+						>
+							<FormLabel htmlFor='comment'>Your message</FormLabel>
+							<TextField
+								id='comment'
+								multiline
+								{...formik.getFieldProps('comment')}
+							/>
+							<FormHelperText>{formik.errors.comment}</FormHelperText>
+						</FormControl>
+						<Button type='submit' fullWidth>
+							Submit
+						</Button>
+					</Stack>
 				</Box>
-			</VStack>
+			</Stack>
 		</FullScreenSection>
 	);
 }

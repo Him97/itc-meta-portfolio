@@ -1,22 +1,28 @@
-import { useColorMode, useColorModeValue, IconButton } from '@chakra-ui/react';
-import { FaMoon, FaSun } from 'react-icons/fa';
+import { IconButton, Tooltip, useTheme } from '@mui/material';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 
 export default function ColorModeSwitcher(props) {
-	const { toggleColorMode } = useColorMode();
-	const text = useColorModeValue('dark', 'light');
-	const SwitchIcon = useColorModeValue(FaMoon, FaSun);
+	const theme = useTheme();
 
 	return (
-		<IconButton
-			size='md'
-			fontSize='lg'
-			aria-label={`Switch to ${text} mode`}
-			variant='ghost'
-			color='current'
-			marginLeft='2'
-			onClick={toggleColorMode}
-			icon={<SwitchIcon />}
-			{...props}
-		/>
+		<Tooltip
+			title={
+				theme.palette.mode === 'dark'
+					? 'Switch to light mode'
+					: 'Switch to dark mode'
+			}
+		>
+			<IconButton
+				onClick={() => {
+					theme.palette.mode === 'dark'
+						? theme.palette.setMode('light')
+						: theme.palette.setMode('dark');
+				}}
+				{...props}
+			>
+				{theme.palette.mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
+			</IconButton>
+		</Tooltip>
 	);
 }
