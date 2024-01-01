@@ -1,13 +1,15 @@
 import * as React from 'react';
-import { Box, Button, Grid, Typography } from '@mui/material';
-import FullScreenSection from './FullScreenSection';
+import 'animate.css';
+import { Button, Grid, Typography } from '@mui/material';
+import TrackVisibility from 'react-on-screen';
 import headerImg from '../assets/img/header-img.svg';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import 'animate.css';
-import TrackVisibility from 'react-on-screen';
 import { tagline } from '../styles';
+import { BrowserRouter } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
+import { bannergrid } from '../styles';
 
-export default function LandingSection() {
+export default function Banner() {
 	const [loopNum, setLoopNum] = React.useState<number>(0);
 	const [isDeleting, setIsDeleting] = React.useState<boolean>(false);
 	const [text, setText] = React.useState<string>('');
@@ -16,11 +18,12 @@ export default function LandingSection() {
 	const period = 2000;
 
 	React.useEffect(() => {
-		const toRotate = ['Web Developer', 'Web Designer', 'UI/UX Designer'];
-
-		const ticker = setInterval(() => {
-			tick();
-		}, delta);
+		const toRotate = [
+			'Web Developer',
+			'全栈开发者',
+			'UI/UX Designer',
+			'全端工程師',
+		];
 
 		const tick = () => {
 			const i = loopNum % toRotate.length;
@@ -49,38 +52,34 @@ export default function LandingSection() {
 			}
 		};
 
+		const ticker = setInterval(() => {
+			tick();
+		}, delta);
+
 		return () => {
 			clearInterval(ticker);
 		};
 	}, [delta, isDeleting, loopNum, text]);
 
 	return (
-		<FullScreenSection
-			justifyContent='center'
-			alignItems='center'
-			isDarkBackground
-			backgroundColor='#2A4365'
-		>
-			<Grid container alignItems='center' spacing={8}>
-				<Grid item xs={12} md={6} xl={7}>
+		<BrowserRouter>
+			<Grid
+				component='section'
+				id='home'
+				container
+				direction='row'
+				style={bannergrid}
+			>
+				<Grid item xs={12} md={6} xl={7} textAlign='start'>
 					<TrackVisibility>
 						{({ isVisible }) => (
-							<Box
-								component='div'
+							<div
 								className={isVisible ? 'animate__animated animate__fadeIn' : ''}
 							>
-								<Typography component='span' style={tagline}>
-									Welcome to my Portfolio
-								</Typography>
-								<Typography variant='h1'>
-									{`Hi! I'm Xin`}{' '}
-									<span
-										className='txt-rotate'
-										dataPeriod='1000'
-										data-rotate='[ "Web Developer", "Web Designer", "UI/UX Designer" ]'
-									>
-										<span className='wrap'>{text}</span>
-									</span>
+								<Typography style={tagline}>Welcome to my Portfolio</Typography>
+								<Typography variant='h2' component='h1'>
+									{`Hi! I'm Xin`} <br />
+									{text}
 								</Typography>
 								<Typography paragraph>
 									Lorem Ipsum is simply dummy text of the printing and
@@ -89,30 +88,31 @@ export default function LandingSection() {
 									printer took a galley of type and scrambled it to make a type
 									specimen book.
 								</Typography>
-								<Button
-									variant='text'
-									onClick={() => console.log('connect')}
-									endIcon={<ChevronRightIcon />}
-								>
-									Let’s Connect
-								</Button>
-							</Box>
+								<HashLink to='#connect'>
+									<Button
+										type='button'
+										onClick={() => console.log('connect')}
+										endIcon={<ChevronRightIcon />}
+									>
+										Let’s Connect
+									</Button>
+								</HashLink>
+							</div>
 						)}
 					</TrackVisibility>
 				</Grid>
 				<Grid item xs={12} md={6} xl={5}>
 					<TrackVisibility>
 						{({ isVisible }) => (
-							<Box
-								component='div'
+							<div
 								className={isVisible ? 'animate__animated animate__zoomIn' : ''}
 							>
 								<img src={headerImg} alt='Header Img' />
-							</Box>
+							</div>
 						)}
 					</TrackVisibility>
 				</Grid>
 			</Grid>
-		</FullScreenSection>
+		</BrowserRouter>
 	);
 }

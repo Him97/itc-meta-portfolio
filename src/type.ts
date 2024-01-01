@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface Response {
     message: string;
     isSuccess: boolean;
@@ -10,14 +12,22 @@ export interface AlertProps extends Response {
 }
 
 export interface FormDataType {
-  firstName?: string;
+  firstname?: string;
+  lastname?: string;
+  phone?: string;
   email?: string;
   type?: string;
-  comment?: string;
+  message?: string;
 }
 
 export interface CardContentType {
     title: string;
     description: string;
-    imageSrc: string;
+    imgUrl: string;
+}
+
+export interface NewsletterProps {
+  status?: string | null,
+  message?: string | Error | null,
+  onValidated:(formData: FormDataType) => void
 }

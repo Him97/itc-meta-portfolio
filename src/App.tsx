@@ -1,31 +1,44 @@
-import { Stack } from '@mui/material';
+import { Stack, createTheme, ThemeProvider } from '@mui/material';
 import Header from './components/Header';
-import LandingSection from './components/LandingSection';
-import ProjectsSection from './components/ProjectsSection';
-import ContactMeSection from './components/ContactMeSection';
+import Banner from './components/Banner';
+import Skills from './components/Skills';
+import Projects from './components/Projects';
+import Contact from './components/Contact';
 import Footer from './components/Footer';
-import AlertComponent from './components/AlertComponent';
 import './App.css';
 import { AlertProvider } from './context/alertContext';
 
 export default function App() {
+	const theme = createTheme({
+		typography: {
+			fontFamily: [
+				'PT Sans',
+				'sans-serif',
+				'IBM Plex Sans Hebrew',
+				'HYWenhei',
+			].join(','),
+		},
+	});
+
 	return (
-		<Stack
-			className='App'
-			direction='column'
-			position='relative'
-			minHeight='100vh'
-			maxWidth='100vw'
-			textAlign='center'
-		>
-			<Header />
-			<AlertProvider>
-				<LandingSection />
-				<ProjectsSection />
-				<ContactMeSection />
-				<AlertComponent />
-			</AlertProvider>
-			<Footer />
-		</Stack>
+		<ThemeProvider theme={theme}>
+			<Stack
+				direction='column'
+				position='relative'
+				minHeight='100vh'
+				maxWidth='100vw'
+				textAlign='center'
+				fontFamily='PT Sans'
+			>
+				<Header />
+				<AlertProvider>
+					<Banner />
+					<Skills />
+					<Projects />
+					<Contact />
+				</AlertProvider>
+				<Footer />
+			</Stack>
+		</ThemeProvider>
 	);
 }
