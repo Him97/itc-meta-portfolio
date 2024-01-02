@@ -18,5 +18,9 @@
 	"submit": "提交",
 	"copyright": "版权所有",
 	"allrightsreserved": "保留所有权利",
-	"me": "李鑫"
+	"me": "李鑫",
+	"linkedin": "领英",
+	"frontend": "前端",
+	"backend": "后端",
+	"fullstack": "全栈开发"
 }
