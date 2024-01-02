@@ -1,0 +1,22 @@
+{
+	"home": "主页",
+	"skills": "技能",
+	"projects": "项目",
+	"connect": "联系方式",
+	"welcome": "欢迎来到我的个人主页",
+	"hi": "你好！我是李鑫",
+	"im": "我是一名",
+	"home-para": "As a full stack developer with a passion for continuous learning with expertise in both front-end and back-end development, I am adept at creating robust and user-friendly web applications. My commitment to personal growth and development allows me to stay up-to-date with the latest technologies and industry trends, ensuring that I can deliver innovative solutions. I am driven by challenges and thrive in dynamic environments where I can apply my knowledge and skills to create impactful and scalable software solutions.",
+	"skill-para": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+	"projects-para": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+	"contact": "与我联系",
+	"firstname": "名字",
+	"lastname": "姓氏",
+	"email": "电子邮件",
+	"phone": "手机号码",
+	"message": "给我留言",
+	"submit": "提交",
+	"copyright": "版权所有",
+	"allrightsreserved": "保留所有权利",
+	"me": "李鑫"
+}

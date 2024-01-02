@@ -1,9 +1,12 @@
 import { Grid, IconButton, Link, Tooltip, Typography } from '@mui/material';
 import MailchimpForm from './MailchimpForm';
-import { socials } from './Socials';
+import { Socials } from './Socials';
 import { footercontainer } from '../styles';
+import { useTranslation } from 'react-i18next';
 
 export default function Footer() {
+	const { t } = useTranslation();
+	const socials = Socials();
 	return (
 		<Grid component='footer' container direction='row' style={footercontainer}>
 			<MailchimpForm />
@@ -21,12 +24,12 @@ export default function Footer() {
 					</Tooltip>
 				))}
 				<Typography>
-					{'Copyright © '}
+					{t('copyright') + ' © '}
 					<Link color='inherit' href='/'>
-						Xin Li
+						{t('me')}
 					</Link>{' '}
 					{new Date().getFullYear()}
-					{'.  All Rights Reserved'}
+					{'. ' + t('allrightsreserved')}
 				</Typography>
 			</Grid>
 		</Grid>

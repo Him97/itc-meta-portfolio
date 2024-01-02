@@ -2,12 +2,14 @@ import * as React from 'react';
 import { Alert, Button, Grid, InputBase, Typography } from '@mui/material';
 import { NewsletterProps } from '../type';
 import { newletterbutton, newlettercontainer } from '../styles';
+import { useTranslation } from 'react-i18next';
 
 export default function Newsletter({
 	status,
 	message,
 	onValidated,
 }: NewsletterProps) {
+	const { t } = useTranslation();
 	const [email, setEmail] = React.useState<string>('');
 
 	React.useEffect(() => {
@@ -60,7 +62,7 @@ export default function Newsletter({
 					placeholder='Email Address'
 				/>
 				<Button type='submit' variant='contained' style={newletterbutton}>
-					Submit
+					{t('submit')}
 				</Button>
 			</Grid>
 		</Grid>

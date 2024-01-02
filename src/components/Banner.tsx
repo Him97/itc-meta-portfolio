@@ -8,8 +8,10 @@ import { tagline } from '../styles';
 import { BrowserRouter } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import { bannergrid } from '../styles';
+import { useTranslation } from 'react-i18next';
 
 export default function Banner() {
+	const { t } = useTranslation();
 	const [loopNum, setLoopNum] = React.useState<number>(0);
 	const [isDeleting, setIsDeleting] = React.useState<boolean>(false);
 	const [text, setText] = React.useState<string>('');
@@ -76,26 +78,20 @@ export default function Banner() {
 							<div
 								className={isVisible ? 'animate__animated animate__fadeIn' : ''}
 							>
-								<Typography style={tagline}>Welcome to my Portfolio</Typography>
+								<Typography style={tagline}>{t('welcome')}</Typography>
 								<Typography variant='h2' component='h1'>
-									{`Hi! I'm Xin`}
+									{t('hi')}
 									<br />
-									{`I am a ${text}`}
+									{`${t('im')} ${text}`}
 								</Typography>
-								<Typography paragraph>
-									Lorem Ipsum is simply dummy text of the printing and
-									typesetting industry. Lorem Ipsum has been the industry's
-									standard dummy text ever since the 1500s, when an unknown
-									printer took a galley of type and scrambled it to make a type
-									specimen book.
-								</Typography>
+								<Typography paragraph>{t('home-para')}</Typography>
 								<HashLink to='#connect'>
 									<Button
 										type='button'
 										onClick={() => console.log('connect')}
 										endIcon={<ChevronRightIcon />}
 									>
-										Let’s Connect
+										{t('connect')}
 									</Button>
 								</HashLink>
 							</div>

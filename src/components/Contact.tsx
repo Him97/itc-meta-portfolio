@@ -17,8 +17,10 @@ import * as Yup from 'yup';
 import useSubmit from '../hooks/useSubmit';
 import useAlert from '../hooks/useAlert';
 import { contactcontainer } from '../styles';
+import { useTranslation } from 'react-i18next';
 
 export default function Contact() {
+	const { t } = useTranslation();
 	const { response, submit } = useSubmit();
 	const { onOpen } = useAlert();
 
@@ -80,7 +82,7 @@ export default function Contact() {
 							className={isVisible ? 'animate__animated animate__fadeIn' : ''}
 						>
 							<Typography variant='h2' textAlign='start'>
-								Get In Touch
+								{t('contact')}
 							</Typography>
 							<Grid
 								container
@@ -98,11 +100,13 @@ export default function Contact() {
 											!!formik.errors.firstname && formik.touched.firstname
 										}
 									>
-										<InputLabel htmlFor='firstname'>First Name</InputLabel>
+										<InputLabel htmlFor='firstname'>
+											{t('firstname')}
+										</InputLabel>
 										<OutlinedInput
 											required
 											id='firstname'
-											label='First Name'
+											label={t('firstname')}
 											{...formik.getFieldProps('firstname')}
 										/>
 										<FormHelperText>{formik.errors.firstname}</FormHelperText>
@@ -114,11 +118,11 @@ export default function Contact() {
 										variant='outlined'
 										error={!!formik.errors.lastname && formik.touched.lastname}
 									>
-										<InputLabel htmlFor='lastname'>Last Name</InputLabel>
+										<InputLabel htmlFor='lastname'>{t('lastname')}</InputLabel>
 										<OutlinedInput
 											required
 											id='lastname'
-											label='Last Name'
+											label={t('lastname')}
 											{...formik.getFieldProps('lastname')}
 										/>
 										<FormHelperText>{formik.errors.lastname}</FormHelperText>
@@ -130,11 +134,11 @@ export default function Contact() {
 										variant='outlined'
 										error={!!formik.errors.email && formik.touched.email}
 									>
-										<InputLabel htmlFor='email'>Email Address</InputLabel>
+										<InputLabel htmlFor='email'>{t('email')}</InputLabel>
 										<OutlinedInput
 											required
 											id='email'
-											label='Email Address'
+											label={t('email')}
 											{...formik.getFieldProps('email')}
 										/>
 										<FormHelperText>{formik.errors.email}</FormHelperText>
@@ -146,11 +150,11 @@ export default function Contact() {
 										variant='outlined'
 										error={!!formik.errors.phone && formik.touched.phone}
 									>
-										<InputLabel htmlFor='email'>Phone</InputLabel>
+										<InputLabel htmlFor='email'>{t('phone')}</InputLabel>
 										<OutlinedInput
 											required
 											id='phone'
-											label='Phone'
+											label={t('phone')}
 											{...formik.getFieldProps('phone')}
 										/>
 										<FormHelperText>{formik.errors.phone}</FormHelperText>
@@ -180,10 +184,10 @@ export default function Contact() {
 										variant='outlined'
 										error={!!formik.errors.message && formik.touched.message}
 									>
-										<InputLabel htmlFor='message'>Your message</InputLabel>
+										<InputLabel htmlFor='message'>{t('message')}</InputLabel>
 										<OutlinedInput
 											id='message'
-											label='Your message'
+											label={t('message')}
 											multiline
 											minRows={4}
 											{...formik.getFieldProps('message')}
@@ -206,7 +210,7 @@ export default function Contact() {
 										className='navbutton'
 										fullWidth
 									>
-										Submit
+										{t('submit')}
 									</Button>
 								</Grid>
 							</Grid>

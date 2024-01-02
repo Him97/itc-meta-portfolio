@@ -7,9 +7,11 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import './App.css';
+import { useLocale } from './hooks/useLocale';
 import { AlertProvider } from './context/alertContext';
 
 export default function App() {
+	const { language } = useLocale();
 	const [mode, setMode] = React.useState<'light' | 'dark'>('light');
 	const colorMode = React.useMemo(
 		() => ({
@@ -32,6 +34,7 @@ export default function App() {
 		palette: {
 			mode,
 		},
+		direction: language === 'he' ? 'rtl' : 'ltr',
 	});
 
 	return (

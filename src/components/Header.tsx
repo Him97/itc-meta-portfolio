@@ -14,10 +14,12 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
+import LangSwitcher from './LangSwitcher';
+import { useTranslation } from 'react-i18next';
 import { HashLink } from 'react-router-hash-link';
 import { BrowserRouter } from 'react-router-dom';
 import { navbarlink, scrolledbar, unscrolledbar } from '../styles';
-import { socials } from './Socials';
+import { Socials } from './Socials';
 
 const sections = ['home', 'skills', 'projects'];
 
@@ -26,7 +28,9 @@ interface toggleColorMode {
 }
 
 export default function Header({ colorMode }: { colorMode: toggleColorMode }) {
+	const { t } = useTranslation();
 	const theme = useTheme();
+	const socials = Socials();
 	const [activeLink, setActiveLink] = React.useState<string>('home');
 	const [scrolled, setScrolled] = React.useState<boolean>(false);
 
@@ -46,6 +50,14 @@ export default function Header({ colorMode }: { colorMode: toggleColorMode }) {
 
 	const onUpdateActiveLink = (value: string) => {
 		setActiveLink(value);
+		const id = `${value}`;
+		const element = document.getElementById(id);
+		if (element) {
+			element.scrollIntoView({
+				behavior: 'smooth',
+				block: 'start',
+			});
+		}
 	};
 
 	const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -98,7 +110,7 @@ export default function Header({ colorMode }: { colorMode: toggleColorMode }) {
 							}}
 						>
 							<HashLink to='#connect'>
-								<Button type='button'>Let’s Connect</Button>
+								<Button type='button'>{t('connect')}</Button>
 							</HashLink>
 							{socials.map((social, index) => (
 								<Tooltip title={social.tooltip} key={index}>
@@ -121,7 +133,7 @@ export default function Header({ colorMode }: { colorMode: toggleColorMode }) {
 					>
 						<HashLink to='#connect'>
 							<Button type='button' variant='outlined' className='navbutton'>
-								Let’s Connect
+								{t('connect')}
 							</Button>
 						</HashLink>
 						{socials.map((social, index) => (
@@ -155,21 +167,24 @@ export default function Header({ colorMode }: { colorMode: toggleColorMode }) {
 									sx={activeLink ? { opacity: 1 } : { opacity: 0.75 }}
 									onClick={() => onUpdateActiveLink(section)}
 								>
-									{section.charAt(0).toUpperCase() + section.slice(1)}
+									{t(`${section}`)}
 								</Link>
 							))}
+							<LangSwitcher />
+							<Tooltip
+								title={
+									theme.palette.mode === 'dark' ? 'Light Mode' : 'Dark Mode'
+								}
+							>
+								<IconButton onClick={colorMode.toggleColorMode}>
+									{theme.palette.mode === 'dark' ? (
+										<LightModeIcon />
+									) : (
+										<DarkModeIcon />
+									)}
+								</IconButton>
+							</Tooltip>
 						</Breadcrumbs>
-						<Tooltip
-							title={theme.palette.mode === 'dark' ? 'Light Mode' : 'Dark Mode'}
-						>
-							<IconButton onClick={colorMode.toggleColorMode}>
-								{theme.palette.mode === 'dark' ? (
-									<LightModeIcon />
-								) : (
-									<DarkModeIcon />
-								)}
-							</IconButton>
-						</Tooltip>
 					</Box>
 				</Toolbar>
 			</AppBar>
