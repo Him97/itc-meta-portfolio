@@ -1,5 +1,6 @@
 //header styles
 export const scrolledbar = {
+	maxWidth: '100%',
 	padding: '0 2.5rem 0 2.5rem',
 	backgroundColor: 'transparent',
 	justifyContent: 'space-between',
@@ -7,6 +8,7 @@ export const scrolledbar = {
 };
 
 export const unscrolledbar = {
+	maxWidth: '100%',
 	padding: '2.5rem',
 	backgroundColor: 'transparent',
 	boxShadow: 'none',
@@ -65,13 +67,11 @@ export const skillsbgimg = {
 };
 
 //projects styles
-import projectbg from './assets/img/color-sharp2.png';
-
 export const projectscontainer = {
-	backgroundImage: `url(${projectbg})`,
+	padding: '5rem'
 };
 
-export const projectcontent = {
+export const cardcontent = {
 	position: 'absolute',
 	textAlign: 'center',
 	top: '65%',
@@ -81,6 +81,13 @@ export const projectcontent = {
 	opacity: 0,
 	width: '100%',
 };
+
+export const cardcontainer = {
+	background: 'transparent',
+	position: 'relative',
+	overflow: 'hidden',
+	marginBottom: '1rem',
+}
 
 //contact styles
 export const contactcontainer = {
@@ -107,7 +114,7 @@ export const newlettercontainer = {
 	backgroundColor: 'white',
 	borderRadius: 50,
 	color: 'black',
-	padding: '85px 125px',
+	padding: '2.5rem 5rem',
 	marginBottom: '1rem',
 	marginTop: ' -5rem',
 };

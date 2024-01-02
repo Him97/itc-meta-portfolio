@@ -9,8 +9,11 @@ import {
 	Menu,
 	Toolbar,
 	Tooltip,
+	useTheme,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
 import { HashLink } from 'react-router-hash-link';
 import { BrowserRouter } from 'react-router-dom';
 import { navbarlink, scrolledbar, unscrolledbar } from '../styles';
@@ -18,7 +21,12 @@ import { socials } from './Socials';
 
 const sections = ['home', 'skills', 'projects'];
 
-export default function Header() {
+interface toggleColorMode {
+	toggleColorMode: () => void;
+}
+
+export default function Header({ colorMode }: { colorMode: toggleColorMode }) {
+	const theme = useTheme();
 	const [activeLink, setActiveLink] = React.useState<string>('home');
 	const [scrolled, setScrolled] = React.useState<boolean>(false);
 
@@ -112,9 +120,9 @@ export default function Header() {
 						alignItems='center'
 					>
 						<HashLink to='#connect'>
-							<button type='button' className='navbutton'>
+							<Button type='button' variant='outlined' className='navbutton'>
 								Let’s Connect
-							</button>
+							</Button>
 						</HashLink>
 						{socials.map((social, index) => (
 							<Tooltip title={social.tooltip} key={index}>
@@ -151,6 +159,17 @@ export default function Header() {
 								</Link>
 							))}
 						</Breadcrumbs>
+						<Tooltip
+							title={theme.palette.mode === 'dark' ? 'Light Mode' : 'Dark Mode'}
+						>
+							<IconButton onClick={colorMode.toggleColorMode}>
+								{theme.palette.mode === 'dark' ? (
+									<LightModeIcon />
+								) : (
+									<DarkModeIcon />
+								)}
+							</IconButton>
+						</Tooltip>
 					</Box>
 				</Toolbar>
 			</AppBar>

@@ -59,7 +59,7 @@ export default function Newsletter({
 					onChange={(e) => setEmail(e.target.value)}
 					placeholder='Email Address'
 				/>
-				<Button type='submit' style={newletterbutton}>
+				<Button type='submit' variant='contained' style={newletterbutton}>
 					Submit
 				</Button>
 			</Grid>

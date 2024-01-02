@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+	Button,
 	FormControl,
 	FormHelperText,
 	Grid,
@@ -78,9 +79,18 @@ export default function Contact() {
 						<div
 							className={isVisible ? 'animate__animated animate__fadeIn' : ''}
 						>
-							<Typography variant='h2'>Get In Touch</Typography>
-							<Grid container component='form' onSubmit={formik.handleSubmit}>
-								<Grid item xl={12} lg={12} md={12} sm={6} className='px-1'>
+							<Typography variant='h2' textAlign='start'>
+								Get In Touch
+							</Typography>
+							<Grid
+								container
+								spacing={1}
+								my={2}
+								justifyContent='space-between'
+								component='form'
+								onSubmit={formik.handleSubmit}
+							>
+								<Grid item xl={6} lg={6} md={6} sm={6} xs={12}>
 									<FormControl
 										fullWidth
 										variant='outlined'
@@ -98,7 +108,7 @@ export default function Contact() {
 										<FormHelperText>{formik.errors.firstname}</FormHelperText>
 									</FormControl>
 								</Grid>
-								<Grid item xl={12} lg={12} md={12} sm={6} className='px-1'>
+								<Grid item xl={6} lg={6} md={6} sm={6} xs={12}>
 									<FormControl
 										fullWidth
 										variant='outlined'
@@ -114,7 +124,7 @@ export default function Contact() {
 										<FormHelperText>{formik.errors.lastname}</FormHelperText>
 									</FormControl>
 								</Grid>
-								<Grid item xl={12} lg={12} md={12} sm={6} className='px-1'>
+								<Grid item xl={6} lg={6} md={6} sm={6} xs={12}>
 									<FormControl
 										fullWidth
 										variant='outlined'
@@ -130,7 +140,7 @@ export default function Contact() {
 										<FormHelperText>{formik.errors.email}</FormHelperText>
 									</FormControl>
 								</Grid>
-								<Grid item xl={12} lg={12} md={12} sm={6} className='px-1'>
+								<Grid item xl={6} lg={6} md={6} sm={6} xs={12}>
 									<FormControl
 										fullWidth
 										variant='outlined'
@@ -146,12 +156,11 @@ export default function Contact() {
 										<FormHelperText>{formik.errors.phone}</FormHelperText>
 									</FormControl>
 								</Grid>
-								<Grid item xl={12} lg={12} md={12} sm={6} className='px-1'>
+								<Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
 									<FormControl fullWidth variant='outlined'>
 										<NativeSelect
 											title='type'
 											id='type'
-											defaultValue=''
 											{...formik.getFieldProps('type')}
 										>
 											<option value='' disabled>
@@ -165,7 +174,7 @@ export default function Contact() {
 										</NativeSelect>
 									</FormControl>
 								</Grid>
-								<Grid item xl={12} lg={12} md={12} className='px-1'>
+								<Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
 									<FormControl
 										fullWidth
 										variant='outlined'
@@ -176,13 +185,29 @@ export default function Contact() {
 											id='message'
 											label='Your message'
 											multiline
+											minRows={4}
 											{...formik.getFieldProps('message')}
 										/>
 										<FormHelperText>{formik.errors.message}</FormHelperText>
 									</FormControl>
-									<button type='submit' className='navbutton'>
+								</Grid>
+								<Grid
+									item
+									xl={12}
+									lg={12}
+									md={12}
+									sm={12}
+									xs={12}
+									textAlign='start'
+								>
+									<Button
+										type='submit'
+										variant='outlined'
+										className='navbutton'
+										fullWidth
+									>
 										Submit
-									</button>
+									</Button>
 								</Grid>
 							</Grid>
 						</div>

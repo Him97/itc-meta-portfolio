@@ -7,6 +7,7 @@ img {
 	height: auto;
 }
 
+/*header styles*/
 .navbutton {
 	font-weight: 700;
 	color: #fff;
@@ -42,10 +43,73 @@ img {
 	position: absolute;
 }
 
-.cardcontainer:hover .cardcontent {
+/*projects styles*/
+.nav-tabs {
+	width: 100%;
+	margin-bottom: 5rem;
+	border-radius: 5rem;
+	background-color: rgb(255 255 255 / 10%);
+	overflow: hidden;
+	justify-content: center;
+	align-items: center;
+}
+
+.nav-tabs .nav-tab {
+	width: 33.33333%;
+	background-color: transparent;
+	border-radius: 0;
+	padding: 17px 0;
+	color: #fff;
+	font-size: 17px;
+	letter-spacing: 0.8px;
+	font-weight: 500;
+	position: relative;
+	transition: 0.3s ease-in-out;
+	text-align: center;
+	z-index: 0;
+}
+
+.nav-tabs .nav-tab::before {
+	content: '';
+	position: absolute;
+	width: 0;
+	height: 100%;
+	background: linear-gradient(90.21deg, #aa367c -5.91%, #4a2fbd 111.58%);
+	top: 0;
+	left: 0;
+	z-index: -1;
+	transition: 0.3s ease-in-out;
+}
+
+.nav-tabs .nav-tab.active::before {
+	width: 100% !important;
+}
+
+.nav-tabs .nav-tab.active {
+	border: 1px solid rgba(255, 255, 255, 1);
+}
+
+.card-container::before {
+	content: '';
+	background: linear-gradient(90deg, #aa367c -5.91%, #4a2fbd 111.58%);
+	opacity: 0.85;
+	position: absolute;
+	width: 100%;
+	left: 0;
+	height: 0;
+	transition: 0.4s ease-in-out;
+}
+
+.card-container:hover::before {
+	height: 100%;
+}
+
+.card-container:hover .card-content {
 	top: 50%;
 	opacity: 1;
 }
+
+/*footer styles*/
 .new-email-bx {
 	background: #fff;
 	padding: 5px;
@@ -56,6 +120,7 @@ img {
 	align-items: center;
 	justify-content: space-between;
 }
+
 .new-email-bx::before {
 	content: '';
 	background: linear-gradient(90.21deg, #aa367c -5.91%, #4a2fbd 111.58%);
@@ -67,6 +132,7 @@ img {
 	bottom: -1px;
 	right: -1px;
 }
+
 .new-email-bx::after {
 	content: '';
 	background: #fff;

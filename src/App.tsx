@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { Stack, createTheme, ThemeProvider } from '@mui/material';
 import Header from './components/Header';
 import Banner from './components/Banner';
@@ -9,6 +10,16 @@ import './App.css';
 import { AlertProvider } from './context/alertContext';
 
 export default function App() {
+	const [mode, setMode] = React.useState<'light' | 'dark'>('light');
+	const colorMode = React.useMemo(
+		() => ({
+			toggleColorMode: () => {
+				setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+			},
+		}),
+		[]
+	);
+
 	const theme = createTheme({
 		typography: {
 			fontFamily: [
@@ -17,6 +28,9 @@ export default function App() {
 				'IBM Plex Sans Hebrew',
 				'HYWenhei',
 			].join(','),
+		},
+		palette: {
+			mode,
 		},
 	});
 
@@ -29,8 +43,10 @@ export default function App() {
 				maxWidth='100vw'
 				textAlign='center'
 				fontFamily='PT Sans'
+				color={mode === 'light' ? 'white' : 'white'}
+				bgcolor={mode === 'light' ? 'background.paper' : 'background.default'}
 			>
-				<Header />
+				<Header colorMode={colorMode} />
 				<AlertProvider>
 					<Banner />
 					<Skills />

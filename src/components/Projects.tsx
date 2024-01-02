@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { Box, Container, Grid, Tab, Tabs, Typography } from '@mui/material';
+import { Box, Stack, Tab, Tabs, Typography } from '@mui/material';
 import TabPane from './TabPane';
 import { ProjectCard } from './ProjectCard';
 import projImg1 from '../assets/img/project-img1.png';
 import projImg2 from '../assets/img/project-img2.png';
 import projImg3 from '../assets/img/project-img3.png';
-import colorSharp2 from '../assets/img/color-sharp2.png';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 import { projectscontainer } from '../styles';
@@ -51,10 +50,14 @@ export default function Projects() {
 	];
 
 	return (
-		<Container component='section' id='projects' style={projectscontainer}>
+		<Box component='section' id='projects' style={projectscontainer}>
 			<TrackVisibility>
 				{({ isVisible }) => (
-					<div className={isVisible ? 'animate__animated animate__fadeIn' : ''}>
+					<Stack
+						direction='column'
+						spacing={2}
+						className={isVisible ? 'animate__animated animate__fadeIn' : ''}
+					>
 						<Typography variant='h2'>Projects</Typography>
 						<Typography paragraph>
 							Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -62,44 +65,42 @@ export default function Projects() {
 							ever since the 1500s, when an unknown printer took a galley of
 							type and scrambled it to make a type specimen book.
 						</Typography>
-						<Box id='projects-tabs'>
-							<Tabs
-								className='nav-pills mb-5 justify-content-center align-items-center'
-								id='pills-tab'
-								value={value}
-								onChange={handleChange}
-							>
-								<Tab label='Tab1' />
-								<Tab label='Tab2' />
-								<Tab label='Tab3' />
-							</Tabs>
+						<Tabs
+							className='nav-tabs'
+							id='pills-tab'
+							value={value}
+							onChange={handleChange}
+						>
+							<Tab label='Projects' className='nav-tab' />
+							<Tab label='Tab2' className='nav-tab' />
+							<Tab label='Tab3' className='nav-tab' />
+						</Tabs>
 
+						<TabPane index={0} value={value}>
 							{projects.map((project, index) => (
-								<TabPane index={0} value={value} isVisible={isVisible}>
-									<ProjectCard key={index} {...project} />
-								</TabPane>
+								<ProjectCard key={index} {...project} />
 							))}
+						</TabPane>
 
-							<TabPane index={1} value={value} isVisible={isVisible}>
-								<Typography paragraph>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Cumque quam, quod neque provident velit, rem explicabo
-									excepturi id illo molestiae blanditiis, eligendi dicta
-									officiis asperiores delectus quasi inventore debitis quo.
-								</Typography>
-							</TabPane>
-							<TabPane index={2} value={value} isVisible={isVisible}>
-								<Typography paragraph>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Cumque quam, quod neque provident velit, rem explicabo
-									excepturi id illo molestiae blanditiis, eligendi dicta
-									officiis asperiores delectus quasi inventore debitis quo.
-								</Typography>
-							</TabPane>
-						</Box>
-					</div>
+						<TabPane index={1} value={value}>
+							<Typography paragraph>
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
+								quam, quod neque provident velit, rem explicabo excepturi id
+								illo molestiae blanditiis, eligendi dicta officiis asperiores
+								delectus quasi inventore debitis quo.
+							</Typography>
+						</TabPane>
+						<TabPane index={2} value={value}>
+							<Typography paragraph>
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
+								quam, quod neque provident velit, rem explicabo excepturi id
+								illo molestiae blanditiis, eligendi dicta officiis asperiores
+								delectus quasi inventore debitis quo.
+							</Typography>
+						</TabPane>
+					</Stack>
 				)}
 			</TrackVisibility>
-		</Container>
+		</Box>
 	);
 }

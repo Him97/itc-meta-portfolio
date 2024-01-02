@@ -78,8 +78,9 @@ export default function Banner() {
 							>
 								<Typography style={tagline}>Welcome to my Portfolio</Typography>
 								<Typography variant='h2' component='h1'>
-									{`Hi! I'm Xin`} <br />
-									{text}
+									{`Hi! I'm Xin`}
+									<br />
+									{`I am a ${text}`}
 								</Typography>
 								<Typography paragraph>
 									Lorem Ipsum is simply dummy text of the printing and

@@ -59,7 +59,6 @@ export default function Skills() {
 				md={12}
 				sm={12}
 				xs={12}
-				direction='column'
 				style={skillscontainer}
 				className='wow zoomIn'
 			>
