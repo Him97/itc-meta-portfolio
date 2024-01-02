@@ -16,9 +16,9 @@ import {
   __commonJS
 } from "./chunk-CEQRFMJQ.js";
 
-// node_modules/@mui/icons-material/Translate.js
-var require_Translate = __commonJS({
-  "node_modules/@mui/icons-material/Translate.js"(exports) {
+// node_modules/@mui/icons-material/Mail.js
+var require_Mail = __commonJS({
+  "node_modules/@mui/icons-material/Mail.js"(exports) {
     var _interopRequireDefault = require_interopRequireDefault();
     Object.defineProperty(exports, "__esModule", {
       value: true
@@ -27,10 +27,10 @@ var require_Translate = __commonJS({
     var _createSvgIcon = _interopRequireDefault(require_createSvgIcon());
     var _jsxRuntime = require_jsx_runtime();
     var _default = (0, _createSvgIcon.default)((0, _jsxRuntime.jsx)("path", {
-      d: "m12.87 15.07-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7 1.62-4.33L19.12 17h-3.24z"
-    }), "Translate");
+      d: "M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"
+    }), "Mail");
     exports.default = _default;
   }
 });
-export default require_Translate();
-//# sourceMappingURL=@mui_icons-material_Translate.js.map
+export default require_Mail();
+//# sourceMappingURL=@mui_icons-material_Mail.js.map

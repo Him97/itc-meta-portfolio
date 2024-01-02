@@ -3,7 +3,7 @@ import 'animate.css';
 import { Button, Grid, Typography } from '@mui/material';
 import TrackVisibility from 'react-on-screen';
 import headerImg from '../assets/img/header-img.svg';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { tagline } from '../styles';
 import { BrowserRouter } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
@@ -16,7 +16,7 @@ export default function Banner() {
 	const [isDeleting, setIsDeleting] = React.useState<boolean>(false);
 	const [text, setText] = React.useState<string>('');
 	const [delta, setDelta] = React.useState<number>(300 - Math.random() * 100);
-	const [index, setIndex] = React.useState<number>(1);
+	const [, setIndex] = React.useState<number>(1);
 	const period = 2000;
 
 	React.useEffect(() => {
@@ -89,7 +89,7 @@ export default function Banner() {
 									<Button
 										type='button'
 										onClick={() => console.log('connect')}
-										endIcon={<ChevronRightIcon />}
+										endIcon={<NavigateNextIcon />}
 									>
 										{t('connect')}
 									</Button>

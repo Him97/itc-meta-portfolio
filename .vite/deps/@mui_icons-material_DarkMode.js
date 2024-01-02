@@ -16,9 +16,9 @@ import {
   __commonJS
 } from "./chunk-CEQRFMJQ.js";
 
-// node_modules/@mui/icons-material/Translate.js
-var require_Translate = __commonJS({
-  "node_modules/@mui/icons-material/Translate.js"(exports) {
+// node_modules/@mui/icons-material/DarkMode.js
+var require_DarkMode = __commonJS({
+  "node_modules/@mui/icons-material/DarkMode.js"(exports) {
     var _interopRequireDefault = require_interopRequireDefault();
     Object.defineProperty(exports, "__esModule", {
       value: true
@@ -27,10 +27,10 @@ var require_Translate = __commonJS({
     var _createSvgIcon = _interopRequireDefault(require_createSvgIcon());
     var _jsxRuntime = require_jsx_runtime();
     var _default = (0, _createSvgIcon.default)((0, _jsxRuntime.jsx)("path", {
-      d: "m12.87 15.07-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7 1.62-4.33L19.12 17h-3.24z"
-    }), "Translate");
+      d: "M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"
+    }), "DarkMode");
     exports.default = _default;
   }
 });
-export default require_Translate();
-//# sourceMappingURL=@mui_icons-material_Translate.js.map
+export default require_DarkMode();
+//# sourceMappingURL=@mui_icons-material_DarkMode.js.map
