@@ -5,8 +5,11 @@ import meter3 from '../assets/img/meter3.svg';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { skillsbgimg, skillscontainer } from '../styles';
+import { useTranslation } from 'react-i18next';
 
 export default function Skills() {
+	const { t } = useTranslation();
+
 	const responsive = {
 		superLargeDesktop: {
 			breakpoint: { max: 4000, min: 3000 },
@@ -42,6 +45,11 @@ export default function Skills() {
 			img: meter3,
 			percentage: 80,
 		},
+		{
+			title: 'TypeScript',
+			img: meter3,
+			percentage: 80,
+		},
 	];
 
 	return (
@@ -59,14 +67,11 @@ export default function Skills() {
 				md={12}
 				sm={12}
 				xs={12}
-				style={skillscontainer}
+				sx={skillscontainer}
 				className='wow zoomIn'
 			>
-				<Typography variant='h2'>Skills</Typography>
-				<Typography paragraph>
-					Lorem Ipsum is simply dummy text of the printing and typesetting
-					industry.
-				</Typography>
+				<Typography variant='h2'>{t('skills')}</Typography>
+				<Typography paragraph>{t('skills-para')}</Typography>
 				<Carousel
 					responsive={responsive}
 					infinite={true}

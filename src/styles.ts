@@ -71,6 +71,27 @@ export const projectscontainer = {
 	padding: '5rem'
 };
 
+export const navtabs ={
+	marginBottom: '5rem',
+	borderRadius: '5rem',
+	backgroundColor: 'rgb(255 255 255 / 10%)',
+	overflow: 'hidden',
+}
+
+export const navtab = {
+	width: '33.33333%',
+	backgroundColor: 'transparent',
+	padding: '1rem 0',
+	color: 'white',
+	fontSize: '17px',
+	letterSpacing: '0.8px',
+	fontWeight: 500,
+	position: 'relative',
+	transition: '0.3s ease-in-out',
+	textAlign: 'center',
+	zIndex: 0,
+}
+
 export const cardcontent = {
 	position: 'absolute',
 	textAlign: 'center',
@@ -80,6 +101,7 @@ export const cardcontent = {
 	transition: '0.5s ease-in-out',
 	opacity: 0,
 	width: '100%',
+	zIndex: 1,
 };
 
 export const cardcontainer = {

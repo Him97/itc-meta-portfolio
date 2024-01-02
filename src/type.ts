@@ -1,5 +1,3 @@
-import { ReactNode } from "react";
-
 export interface Response {
     message: string;
     isSuccess: boolean;
@@ -24,6 +22,7 @@ export interface CardContentType {
     title: string;
     description: string;
     imgUrl: string;
+    url: string;
 }
 
 export interface NewsletterProps {

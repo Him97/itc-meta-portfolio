@@ -29,6 +29,7 @@ export default function App() {
 				'sans-serif',
 				'IBM Plex Sans Hebrew',
 				'HYWenhei',
+				'Tangut',
 			].join(','),
 		},
 		palette: {

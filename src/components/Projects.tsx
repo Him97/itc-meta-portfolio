@@ -1,51 +1,58 @@
 import * as React from 'react';
 import { Box, Stack, Tab, Tabs, Typography } from '@mui/material';
 import TabPane from './TabPane';
-import { ProjectCard } from './ProjectCard';
+import { TabCard } from './TabCard';
 import projImg1 from '../assets/img/project-img1.png';
 import projImg2 from '../assets/img/project-img2.png';
 import projImg3 from '../assets/img/project-img3.png';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
-import { projectscontainer } from '../styles';
+import { navtab, navtabs, projectscontainer } from '../styles';
+import { useTranslation } from 'react-i18next';
 
 export default function Projects() {
-	const [value, setValue] = React.useState(0);
+	const { t } = useTranslation();
+	const [value, setValue] = React.useState<number>(0);
 
 	const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
 		setValue(newValue);
 	};
 
-	const projects = [
+	const frontend = [
 		{
-			title: 'Business Startup',
-			description: 'Design & Development',
+			title: 'Zelaze',
+			description:
+				'Final Group Project @ITC | Customized Mutual Assistance Service',
 			imgUrl: projImg1,
+			url: 'https://him-li.github.io/zelaze-frontend/',
 		},
 		{
-			title: 'Business Startup',
-			description: 'Design & Development',
+			title: 'Little Llama',
+			description: 'Final Personal Project @ITC | Pet Adoption Service',
 			imgUrl: projImg2,
+			url: 'https://github.com/him-li/littlellama',
 		},
 		{
-			title: 'Business Startup',
-			description: 'Design & Development',
+			title: 'Little Lemon',
+			description: 'Frontend Capstone @Meta | Restaurant Website',
 			imgUrl: projImg3,
+			url: 'https://github.com/him-li/meta-react-littlelemon',
 		},
+	];
+
+	const backend = [
 		{
-			title: 'Business Startup',
-			description: 'Design & Development',
+			title: 'Zelaze',
+			description:
+				'Final Group Project @ITC | Customized Mutual Assistance Service',
 			imgUrl: projImg1,
+			url: 'https://github.com/him-li/zelaze-backend',
 		},
 		{
-			title: 'Business Startup',
-			description: 'Design & Development',
+			title: 'Little Llama',
+			description: 'Final Personal Project @ITC | Pet Adoption Service',
 			imgUrl: projImg2,
-		},
-		{
-			title: 'Business Startup',
-			description: 'Design & Development',
-			imgUrl: projImg3,
+			url: 'https://github.com/him-li/itc-pet-adoption-backend',
 		},
 	];
 
@@ -58,45 +65,35 @@ export default function Projects() {
 						spacing={2}
 						className={isVisible ? 'animate__animated animate__fadeIn' : ''}
 					>
-						<Typography variant='h2'>Projects</Typography>
-						<Typography paragraph>
-							Lorem Ipsum is simply dummy text of the printing and typesetting
-							industry. Lorem Ipsum has been the industry's standard dummy text
-							ever since the 1500s, when an unknown printer took a galley of
-							type and scrambled it to make a type specimen book.
-						</Typography>
+						<Typography variant='h2'>{t('projects')}</Typography>
+						<Typography paragraph>{t('projects-para')}</Typography>
 						<Tabs
 							className='nav-tabs'
 							id='pills-tab'
 							value={value}
 							onChange={handleChange}
+							variant='fullWidth'
+							style={navtabs}
 						>
-							<Tab label='Projects' className='nav-tab' />
-							<Tab label='Tab2' className='nav-tab' />
-							<Tab label='Tab3' className='nav-tab' />
+							<Tab label='Frontend' className='nav-tab' sx={navtab} />
+							<Tab label='Backend' className='nav-tab' sx={navtab} />
+							<Tab label='Mobile Apps' className='nav-tab' sx={navtab} />
 						</Tabs>
 
 						<TabPane index={0} value={value}>
-							{projects.map((project, index) => (
-								<ProjectCard key={index} {...project} />
+							{frontend.map((project, index) => (
+								<TabCard key={index} {...project} />
 							))}
 						</TabPane>
 
 						<TabPane index={1} value={value}>
-							<Typography paragraph>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
-								quam, quod neque provident velit, rem explicabo excepturi id
-								illo molestiae blanditiis, eligendi dicta officiis asperiores
-								delectus quasi inventore debitis quo.
-							</Typography>
+							{backend.map((project, index) => (
+								<TabCard key={index} {...project} />
+							))}
 						</TabPane>
+
 						<TabPane index={2} value={value}>
-							<Typography paragraph>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
-								quam, quod neque provident velit, rem explicabo excepturi id
-								illo molestiae blanditiis, eligendi dicta officiis asperiores
-								delectus quasi inventore debitis quo.
-							</Typography>
+							<Typography paragraph>More to come...</Typography>
 						</TabPane>
 					</Stack>
 				)}
