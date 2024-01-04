@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Alert, Button, Grid, InputBase, Typography } from '@mui/material';
 import { NewsletterProps } from '../type';
-import { newletterbutton, newlettercontainer } from '../styles';
+import Styles from '../styles';
 import { useTranslation } from 'react-i18next';
 
 export default function Newsletter({
@@ -10,6 +10,7 @@ export default function Newsletter({
 	onValidated,
 }: NewsletterProps) {
 	const { t } = useTranslation();
+	const { newletterbutton, newlettercontainer } = Styles();
 	const [email, setEmail] = React.useState<string>('');
 
 	React.useEffect(() => {

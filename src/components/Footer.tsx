@@ -1,12 +1,13 @@
 import { Grid, IconButton, Link, Tooltip, Typography } from '@mui/material';
 import MailchimpForm from './MailchimpForm';
 import { Socials } from './Socials';
-import { footercontainer } from '../styles';
+import Styles from '../styles';
 import { useTranslation } from 'react-i18next';
 
 export default function Footer() {
 	const { t } = useTranslation();
 	const socials = Socials();
+	const { footercontainer } = Styles();
 	return (
 		<Grid component='footer' container direction='row' style={footercontainer}>
 			<MailchimpForm />

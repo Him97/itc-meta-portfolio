@@ -4,14 +4,14 @@ import { Button, Grid, Typography } from '@mui/material';
 import TrackVisibility from 'react-on-screen';
 import headerImg from '../assets/img/header-img.svg';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import { tagline } from '../styles';
 import { BrowserRouter } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
-import { bannergrid } from '../styles';
 import { useTranslation } from 'react-i18next';
+import Styles from '../styles';
 
 export default function Banner() {
 	const { t } = useTranslation();
+	const { bannercontainer, tagline } = Styles();
 	const [loopNum, setLoopNum] = React.useState<number>(0);
 	const [isDeleting, setIsDeleting] = React.useState<boolean>(false);
 	const [text, setText] = React.useState<string>('');
@@ -70,7 +70,7 @@ export default function Banner() {
 				id='home'
 				container
 				direction='row'
-				style={bannergrid}
+				style={bannercontainer}
 			>
 				<Grid item xs={12} md={6} xl={7} textAlign='start'>
 					<TrackVisibility>

@@ -7,12 +7,13 @@ import projImg2 from '../assets/img/project-img2.png';
 import projImg3 from '../assets/img/project-img3.png';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
-import { navtab, navtabs, projectscontainer } from '../styles';
+import Styles from '../styles';
 import { useTranslation } from 'react-i18next';
 
 export default function Projects() {
 	const { t } = useTranslation();
 	const [value, setValue] = React.useState<number>(0);
+	const { projectscontainer, navtab, navtabs } = Styles();
 
 	const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
 		setValue(newValue);
@@ -57,7 +58,12 @@ export default function Projects() {
 	];
 
 	return (
-		<Box component='section' id='projects' style={projectscontainer}>
+		<Box
+			component='section'
+			id='projects'
+			style={projectscontainer}
+			color='Background'
+		>
 			<TrackVisibility>
 				{({ isVisible }) => (
 					<Stack

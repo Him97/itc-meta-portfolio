@@ -18,7 +18,7 @@ import LangSwitcher from './LangSwitcher';
 import { useTranslation } from 'react-i18next';
 import { HashLink } from 'react-router-hash-link';
 import { BrowserRouter } from 'react-router-dom';
-import { navbarlink, scrolledbar, unscrolledbar } from '../styles';
+import Styles from '../styles';
 import { Socials } from './Socials';
 
 const sections = ['home', 'skills', 'projects'];
@@ -31,6 +31,7 @@ export default function Header({ colorMode }: { colorMode: toggleColorMode }) {
 	const { t } = useTranslation();
 	const theme = useTheme();
 	const socials = Socials();
+	const { navbarlink, scrolledbar, unscrolledbar } = Styles();
 	const [activeLink, setActiveLink] = React.useState<string>('home');
 	const [scrolled, setScrolled] = React.useState<boolean>(false);
 
@@ -132,7 +133,12 @@ export default function Header({ colorMode }: { colorMode: toggleColorMode }) {
 						alignItems='center'
 					>
 						<HashLink to='#connect'>
-							<Button type='button' variant='outlined' className='navbutton'>
+							<Button
+								type='button'
+								variant='outlined'
+								color='primary'
+								className='navbutton'
+							>
 								{t('connect')}
 							</Button>
 						</HashLink>
@@ -143,7 +149,7 @@ export default function Header({ colorMode }: { colorMode: toggleColorMode }) {
 									target='_blank'
 									rel='noopener noreferrer'
 									size='large'
-									color='inherit'
+									color='default'
 								>
 									<social.icon />
 								</IconButton>

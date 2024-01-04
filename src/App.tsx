@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Stack, createTheme, ThemeProvider } from '@mui/material';
+import { deepPurple } from '@mui/material/colors';
 import Header from './components/Header';
 import Banner from './components/Banner';
 import Skills from './components/Skills';
@@ -34,6 +35,16 @@ export default function App() {
 		},
 		palette: {
 			mode,
+			primary: {
+				light: '#000',
+				main: '#fff',
+				dark: '#fff',
+			},
+			secondary: {
+				light: deepPurple[100],
+				main: deepPurple[500],
+				dark: deepPurple[900],
+			},
 		},
 		direction: language === 'he' ? 'rtl' : 'ltr',
 	});

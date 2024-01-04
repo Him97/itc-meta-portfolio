@@ -16,11 +16,12 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import useSubmit from '../hooks/useSubmit';
 import useAlert from '../hooks/useAlert';
-import { contactcontainer } from '../styles';
+import Styles from '../styles';
 import { useTranslation } from 'react-i18next';
 
 export default function Contact() {
 	const { t } = useTranslation();
+	const { contactcontainer } = Styles();
 	const { response, submit } = useSubmit();
 	const { onOpen } = useAlert();
 

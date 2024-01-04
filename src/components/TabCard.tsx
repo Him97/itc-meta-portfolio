@@ -6,7 +6,7 @@ import {
 	Typography,
 } from '@mui/material';
 import { CardContentType } from '../type';
-import { cardcontainer, cardcontent } from '../styles';
+import Styles from '../styles';
 
 export const TabCard = ({
 	title,
@@ -14,6 +14,8 @@ export const TabCard = ({
 	imgUrl,
 	url,
 }: CardContentType) => {
+	const { cardcontainer, cardcontent } = Styles();
+
 	return (
 		<Grid item xl={4} lg={4} md={6} sm={12} xs={12}>
 			<Card sx={cardcontainer} className='card-container'>
