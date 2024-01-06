@@ -81,6 +81,13 @@ export default function Skills() {
 					{skills.map((skill, index) => (
 						<Box key={index}>
 							<img src={skill.img} alt='Image' />
+							<div className='c100 p75 pink'>
+								<span>75%</span>
+								<div className='slice'>
+									<div className='bar'></div>
+									<div className='fill'></div>
+								</div>
+							</div>
 							<Typography variant='h5'>{skill.title}</Typography>
 						</Box>
 					))}

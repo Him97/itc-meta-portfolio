@@ -57,6 +57,7 @@ export default function Styles() {
 
 		skillscontainer: {
 			backgroundColor: theme.palette.mode === 'light'? 'rgba(0,0,0,0.75)':'rgba(255,255,255,0.75)',
+			color: theme.palette.mode === 'light' ? 'white' : 'black',
 			borderRadius: 10,
 			textAlign: 'center',
 			padding: ' 6rem 5rem',

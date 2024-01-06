@@ -26,5 +26,5 @@ body {
 
 @font-face {
 	font-family: 'Tangut';
-	src: local('Tangut'), url('./assets/fonts/Tangut.ttf') format('truetype');
+	src: local('Tangut'), url('./assets/font/Tangut.ttf') format('truetype');
 }
